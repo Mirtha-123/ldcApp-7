@@ -7,7 +7,7 @@ const { scanear, leerDia, leerDia_v2 } = require('../services/flutter');
 require('dotenv').config();
 
 const { subirImagen } = require('../services/firebase')
-const spreadsheetId = "1_Bv8a4G1_F6fbYgv5R1ahsbw9yFArfNyU0vrixmRUvM";
+const spreadsheetId = "1iFs2abOkFU8lFrRzokhb0hrIzSHjeMhi6EMsGU-Fem8";
 
 const QRCode = require('qrcode');
 const { createCanvas, loadImage } = require('canvas');
@@ -126,7 +126,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/borrar", async (req, res) => {
+router.get("/borrar_7", async (req, res) => {
     try {
         const range = "Asistencia!A2:D"
         const respuesta = await borrarRegistros(spreadsheetId, range);
@@ -137,7 +137,7 @@ router.get("/borrar", async (req, res) => {
     }
 });
 
-router.post("/scan", async (req, res) => {
+router.post("/scan_7", async (req, res) => {
     try {
         console.log('peticion de scaneo')
         const respuesta = await scanear(spreadsheetId, req);
@@ -150,7 +150,7 @@ router.post("/scan", async (req, res) => {
 });
 
 
-router.get("/day", async (req, res) => {
+router.get("/day_7", async (req, res) => {
     try {
         console.log('peticion del dia')
         const respuesta = await leerDia(spreadsheetId);
@@ -163,7 +163,7 @@ router.get("/day", async (req, res) => {
 });
 
 
-router.get("/dayV2", async (req, res) => {
+router.get("/dayV2_7", async (req, res) => {
     try {
         console.log('peticion del dia')
         const respuesta = await leerDia_v2(spreadsheetId);
