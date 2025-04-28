@@ -1,0 +1,50 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejecutar Endpoints</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Manejador de Procesos</h1>
+        <button class="btn btn-primary mb-2" onclick="ejecutarEndpoint('/api')">Generar Qr</button><br>
+        <button class="btn btn-secondary mb-2" onclick="ejecutarEndpoint('/api/borrar')">Borrar Registros</button><br>
+       <!-- <button class="btn btn-success mb-2" onclick="ejecutarEndpoint('/api/otro-endpoint-3')">Ejecutar Endpoint 3</button>-->
+
+        <div id="resultado" class="mt-4"></div>
+    </div>
+
+    <script>
+        async function ejecutarEndpoint(endpoint) {
+            const response = await fetch(endpoint);
+            const data = await response.json();
+            document.getElementById('resultado').innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+
+    <!-- Incluye Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
